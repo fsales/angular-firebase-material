@@ -1,0 +1,9 @@
+<mat-list>
+  <app-task-item
+                *ngFor="let task of tasks"
+                [task]="task"
+                (performTask)="onPerfomTask( $event )"
+                (selectTask)="selectedTask = $event">
+
+  </app-task-item>
+</mat-list>
