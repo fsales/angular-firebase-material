@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskModel } from '../models/task.model';
+import { TaskService } from '../task.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task-list',
@@ -8,27 +10,19 @@ import { TaskModel } from '../models/task.model';
 })
 export class TaskListComponent implements OnInit {
 
-  tasks: TaskModel[] = [
-    {
-      uid: 'aad6545',
-      title: 'teste 1',
-      done: true
-    },
-    {
-      uid: 'dfafa5465',
-      title: 'teste 2',
-      done: false
-    }
-  ];
+  tasks$: Observable<TaskModel[]>;
 
   selectedTask: TaskModel;
 
-  constructor() { }
+  constructor(private taskService: TaskService) {
 
-  ngOnInit() {
   }
 
-  onPerfomTask(task: TaskModel): void{
+  ngOnInit(): void {
+    this.tasks$ = this.taskService.tasks.valueChanges();
+  }
+
+  onPerfomTask(task: TaskModel): void {
     console.log(task);
   }
 
