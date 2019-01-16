@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { TaskModel } from '../models/task.model';
 
 
+
 @Component({
   selector: 'app-task-item',
   templateUrl: './task-item.component.html',

@@ -9,7 +9,14 @@ import {
   MatToolbarModule,
   MatListModule,
   MatLineModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatButtonModule,
+  MatIconModule,
+  MatDialogModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatMenuModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,25 +25,43 @@ import { environment } from '../environments/environment';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskService } from './task.service';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskItemComponent,
-    TaskListComponent
+    TaskListComponent,
+    TaskDialogComponent
+  ],
+  entryComponents: [
+    TaskDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
 
     MatToolbarModule,
     MatListModule,
     MatLineModule,
     MatSlideToggleModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
 
-    AppRoutingModule
+    AppRoutingModule,
+
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     TaskService
