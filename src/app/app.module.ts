@@ -44,7 +44,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
 
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
 
     MatToolbarModule,
     MatListModule,

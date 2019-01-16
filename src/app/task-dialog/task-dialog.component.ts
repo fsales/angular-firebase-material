@@ -41,6 +41,7 @@ export class TaskDialogComponent implements OnInit {
       this.dialogRef.close();
     }).catch((error) => {
       console.log(error);
+      this.dialogRef.close();
     });
   }
 }
