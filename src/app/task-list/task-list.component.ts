@@ -25,7 +25,8 @@ export class TaskListComponent implements OnInit {
   }
 
   onPerfomTask(task: TaskModel): void {
-    console.log(task);
+    task.done = !task.done;
+    this.taskService.update(task);
   }
 
   showDialog(): void {
