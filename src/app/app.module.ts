@@ -5,26 +5,42 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
-import {MatToolbarModule} from '@angular/material';
+import {
+  MatToolbarModule,
+  MatListModule,
+  MatLineModule,
+  MatSlideToggleModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { TaskItemComponent } from './task-item/task-item.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskService } from './task.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaskItemComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserAnimationsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+
     MatToolbarModule,
+    MatListModule,
+    MatLineModule,
+    MatSlideToggleModule,
 
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    TaskService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
