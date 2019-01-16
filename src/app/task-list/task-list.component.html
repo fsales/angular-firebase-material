@@ -1,12 +1,28 @@
-<mat-list>
+<mat-nav-list>
   <app-task-item
                 *ngFor="let task of tasks$ | async"
                 [task]="task"
                 (performTask)="onPerfomTask( $event )"
-                (selectTask)="selectedTask = $event">
+                (selectTask)="selectedTask = $event"
+                [matMenuTriggerFor]="taskMenu"
+                [matMenuTriggerData]="{taskToUpdateDelete: task}"
+                >
 
   </app-task-item>
-</mat-list>
+</mat-nav-list>
+
+<mat-menu #taskMenu="matMenu" [overlapTrigger]="false">
+  <ng-template matMenuContent let-task="taskToUpdateDelete" >
+    <button mat-menu-item (click)="showDialog(task)">
+      <mat-icon>edit</mat-icon>
+      <span>update</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>delete</mat-icon>
+      <span>remove</span>
+    </button>
+  </ng-template>
+</mat-menu>
 
 <button mat-fab class="fab-bottom-right" (click)="showDialog()">
   <mat-icon>add</mat-icon>

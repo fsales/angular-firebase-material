@@ -14,7 +14,8 @@ import {
   MatIconModule,
   MatDialogModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -53,6 +54,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MatMenuModule,
 
     AppRoutingModule
   ],
