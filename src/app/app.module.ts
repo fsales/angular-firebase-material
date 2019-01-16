@@ -15,7 +15,8 @@ import {
   MatDialogModule,
   MatInputModule,
   MatFormFieldModule,
-  MatMenuModule
+  MatMenuModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -55,6 +56,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
 
     AppRoutingModule
   ],

@@ -1,3 +1,11 @@
+<mat-spinner
+  class="spinner"
+  [diameter]="50"
+  [strokeWidth]="3"
+  *ngIf="loading"
+  >
+</mat-spinner>
+
 <mat-nav-list>
   <app-task-item
                 *ngFor="let task of tasks$ | async"
@@ -17,7 +25,7 @@
       <mat-icon>edit</mat-icon>
       <span>update</span>
     </button>
-    <button mat-menu-item (click)="onDelete(task)" >
+    <button mat-menu-item (click)=" onDelete(task) " >
       <mat-icon>delete</mat-icon>
       <span>remove</span>
     </button>
