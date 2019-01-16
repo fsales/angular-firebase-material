@@ -27,6 +27,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskService } from './task.service';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,9 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatProgressSpinnerModule,
 
-    AppRoutingModule
+    AppRoutingModule,
+
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     TaskService
