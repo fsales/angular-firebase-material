@@ -9,7 +9,12 @@ import {
   MatToolbarModule,
   MatListModule,
   MatLineModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatButtonModule,
+  MatIconModule,
+  MatDialogModule,
+  MatInputModule,
+  MatFormFieldModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,16 +23,24 @@ import { environment } from '../environments/environment';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskService } from './task.service';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskItemComponent,
-    TaskListComponent
+    TaskListComponent,
+    TaskDialogComponent
+  ],
+  entryComponents: [
+    TaskDialogComponent
   ],
   imports: [
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
 
@@ -35,6 +48,11 @@ import { TaskService } from './task.service';
     MatListModule,
     MatLineModule,
     MatSlideToggleModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
 
     AppRoutingModule
   ],

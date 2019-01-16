@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { TaskModel } from './models/task.model';
+import { AngularFirestore, AngularFirestoreCollection, CollectionReference } from 'angularfire2/firestore';
+
 import { Observable } from 'rxjs';
+import { TaskModel } from './models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,11 @@ export class TaskService {
   create(task: TaskModel): Promise<void> {
 
     const uid = this.db.createId();
-
-    return this.tasks.doc<TaskModel>(uid).set({
+    return this.tasks.doc<TaskModel>(uid).set(JSON.parse(JSON.stringify({
       uid: uid,
       title: task.title,
       done: task.done
-    });
+    })));
   }
 
   update(task: TaskModel): Promise<void> {
@@ -39,6 +39,7 @@ export class TaskService {
   }
 
   private setTasks(): void {
-    this.tasks = this.db.collection<TaskModel>('/tasks');
+    this.tasks = this.db.collection<TaskModel>('/tasks',
+      (ref: CollectionReference) => ref.orderBy('done', 'asc').orderBy('title', 'asc'));
   }
 }
